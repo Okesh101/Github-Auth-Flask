@@ -1,0 +1,7 @@
+Flask
+requests
+python-dotenv
+flask_cors
+Authlib
+Flask-Session
+PyJWT

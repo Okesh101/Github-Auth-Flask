@@ -8,7 +8,7 @@ def get_me(user_id):
     try:
         cursor = db.cursor()
         cursor.execute(
-            "SELECT id, email, name, profile_pic FROM users WHERE id = ?", (user_id,))
+            "SELECT id, email, display_name, profile_pic FROM users WHERE id = ?", (user_id,))
         user = cursor.fetchone()
         if user:
             return {

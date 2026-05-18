@@ -37,3 +37,49 @@ def get_me(user_id):
     finally:
         if db:
             db.close()
+
+
+def get_all_users():
+    db = get_db_connection()
+    try:
+        cursor = db.cursor()
+        cursor.execute(
+            "SELECT * FROM users"
+        )
+        rows = cursor.fetchall()
+
+        if rows is None:
+            return {
+                "status": "SUCCESS",
+                "code": 200,
+                "data": {},
+                "message": "No users have been registered."
+            }
+        
+        userData = []
+        for row in rows:
+            userData.append({
+                "id": row['id'],
+                "provider": row['provider'],
+                "email": row['email'],
+                "username": row['username'],
+                "display_name": row['display_name'],
+                "picture": row['profile_pic'],
+                "joined_at": row['created_at']
+            })
+
+        return {
+            "status": "SUCCESS",
+            "code": 200,
+            "data": userData,
+            "message": "All users retreived successfully"
+        }
+    except Exception as e:
+        return {
+            "status": "ERROR",
+            "code": 500,
+            "message": f"DB error fetching users: {e}."
+        }
+    finally:
+        if db:
+            db.close()

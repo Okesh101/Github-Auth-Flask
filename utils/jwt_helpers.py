@@ -12,6 +12,7 @@ def generate_access_token(user):
         "user_id": user["id"],
         "provider": user["provider"],
         "role": user["role"],
+        "email": user["email"],
         "exp": datetime.now(UTC) + timedelta(minutes=15),
         "type": "access"
     }
@@ -27,6 +28,7 @@ def generate_refresh_token(user):
     payload = {
         "user_id": user["id"],
         "provider": user["provider"],
+        "email": user["email"],
         "role": user["role"],
         "exp": datetime.now(UTC) + timedelta(days=30),
         "type": "refresh"

@@ -1,7 +1,7 @@
 # database/functions/jwy_auth.py
 
 from database.db import get_db_connection
-from datetime import datetime, timedelta, UTC
+from datetime import datetime, UTC
 import sqlite3, uuid
 
 def save_refresh_token(user_id, refresh_token, expires_at):

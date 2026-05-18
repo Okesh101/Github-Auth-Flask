@@ -5,6 +5,7 @@ import "./index.css";
 import App from "./App.tsx";
 import Dashboard from "./Dashboard.tsx";
 import AuthCallback from "./AuthCallback.tsx";
+import AdminDashboard from "./AdminDashboard.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -12,6 +13,7 @@ createRoot(document.getElementById("root")!).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/adminDashboard" element={<AdminDashboard/>} />
         <Route path="/auth/callback" element={<AuthCallback />} />
       </Routes>
     </BrowserRouter>
